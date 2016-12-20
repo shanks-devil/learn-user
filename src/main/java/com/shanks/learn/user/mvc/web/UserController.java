@@ -6,9 +6,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import lombok.extern.slf4j.Slf4j;
-
-import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,11 +16,7 @@ import com.shanks.learn.user.mvc.service.UserService;
 
 @RestController
 @RequestMapping("/learn")
-@Slf4j
 public class UserController {
-	
-	@Resource
-	private Environment env;
 	
 	@Resource
 	private UserService userService;
@@ -49,7 +42,6 @@ public class UserController {
 	@ApiOperation(value = "检索所有用户")
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public List<User> listUser() {
-		log.info(env.getProperty("server.port"));
 		return userService.listUser();
 	}
 	
